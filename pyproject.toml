@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "browser-agent"
+version = "0.1.0"
+description = ""
+authors = ["sumitkumar9988 <sumi9998877@gmail.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.12,<4.0"
+langchain = "^0.2.6"
+langgraph = "^0.1.5"
+langchain-openai = "^0.1.14"
+python-dotenv = "^1.0.1"
+colorama = "^0.4.6"
+playwright = "^1.45.0"
+pillow = "^10.4.0"
+nest-asyncio = "^1.6.0"
+playwright-stealth = "^1.0.6"
+setuptools = "^70.3.0"
+grandalf = "^0.8"
+ipython = "^8.26.0"
+flask = "^3.0.3"
+google-generativeai = "^0.7.2"
+langchain-community = "^0.2.11"
+openai = "^1.43.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
