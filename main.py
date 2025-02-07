@@ -324,130 +324,20 @@ async def call_agent(question: str, page, homeurl, max_steps: int = 500):
 # Main Code
 async def main():
     # Objective of code
-    objective = """You are on a job board and need to apply for jobs. Follow these steps:
-                - Locate and click the "Apply for this job" button.
-                - First if you find any Input or text area fill that, and scroll fill all form, ensuring all checkboxes are checked.
-                - If all input form are click then Submit form.
-                - Here will be basic details "address": "Mumbai, MH", "email": "hsoni.mba2023@ivey.ca", "name": "Harsh Soni", "phone": "9773278574", "skills": [
-            "Google Analytics & Adobe Analytics",
-            "SQL",
-            "Tableau",
-            "Excel",
-            "Google Sheets",
-            "A/B testing and experimentation",
-            "Agile Development",
-            "Github",
-        ],
-        "work_experience": [
-            {
-                "id": 1,
-                "company": "Instill AI",
-                "description": [
-                    {
-                        "position": 1,
-                        "content": "Built product culture, OKR and data feedback systems to take MAU to 10k and ARR to $100k from near 0.",
-                    },
-                    {
-                        "position": 2,
-                        "content": "Iterated with experimentation of acquisition levers; ran scripts to track sites where target users gathered, reacted fast and appropriately and each new tool/post brought in 1000s of users and signups.",
-                    },
-                    {
-                        "position": 3,
-                        "content": "Restructured APIs to be less opinionated for usability/popularity, contributing to x2 increase in GitHub Stars.",
-                    },
-                    {
-                        "position": 4,
-                        "content": "Discovered major bottlenecks to activation, prioritization increased activation by x2 over last 6 months.",
-                    },
-                    {
-                        "position": 5,
-                        "content": "Drove freemium and pricing strategy, increased conversion by x2 and engagement rates by x1.5.",
-                    },
-                    {
-                        "position": 6,
-                        "content": "Influenced marketing page through heuristics / A/B tests that increased visit-to-signup conversion by 30%.",
-                    },
-                    {
-                        "position": 7,
-                        "content": "Shipped image-related feature group which extended platform to new users and increased ARR by 20%.",
-                    },
-                    {
-                        "position": 8,
-                        "content": "Owned product lifecycle; monitoring, measuring, minimizing customer support and promoting self-serve.",
-                    },
-                ],
-                "end_date": "current",
-                "location": "London, UK",
-                "start_date": "March 2023",
-                "title": "Senior Product Manager",
-            },
-            {
-                "id": 2,
-                "company": "FinGenesis",
-                "description": [
-                    {
-                        "position": 1,
-                        "content": "Hired, led, and mentored team of 3, making scrum, project management, product development, UI/UX, architecture, system design, tech stack, cloud decisions to deliver B2C app; drove adoption + 25k downloads.",
-                    },
-                    {
-                        "position": 2,
-                        "content": "Strategized GTM, built/positioned/marketed app as trusted and compliant, achieving 4.6/5 ratings.",
-                    },
-                    {
-                        "position": 3,
-                        "content": "Coded MVP for explainable, whitebox AI to reduce client risk, extending sales to funds and ARR by >20%.",
-                    },
-                    {
-                        "position": 4,
-                        "content": "Documented compelling requirements (PRDs) with metrics, product mockups, user stories, GTM, finances.",
-                    },
-                    {
-                        "position": 5,
-                        "content": "Owned B2C product vision, product strategy, roadmap, execution; market entry analysis led to JV in India.",
-                    },
-                    {
-                        "position": 6,
-                        "content": "Presented at client-facing financial and cryptocurrency events for enterprise sales and acquired 3 clients.",
-                    },
-                    {
-                        "position": 7,
-                        "content": "Prioritized and made trade-off decisions, increasing release quality and agile sprint completion rate by x2.",
-                    },
-                ],
-                "end_date": "March 2023",
-                "location": "Singapore",
-                "start_date": "March 2021",
-                "title": "Technical Product Manager",
-            },
-            {
-                "id": 3,
-                "company": "ArcelorMittal",
-                "description": [
-                    {
-                        "position": 1,
-                        "content": "Deployed ML anomaly detection with IoT sensors; reduced equipment maintenance hours by 70%+",
-                    },
-                    {
-                        "position": 2,
-                        "content": "Conducted market research, competitive analysis, reviewed VoC, identified customer needs/trends using analytics (SQL), created BRDs for continuous improvement, communicated with cross-functional teams.",
-                    },
-                ],
-                "end_date": "February 2021",
-                "location": "Hamilton, ON",
-                "start_date": "September 2017",
-                "title": "Engineer",
-            },
-        ],
+    objective = """You are on a browser agent. Follow these steps:
+                - Search for bangalore city.
+                - Find good restaurent among those find top 3 rated restaurants.
+                - give me details of those  restaurants",
        
                 
                 """
-    url = "https://www.jotform.com/build/242140946353454?s=templates"
+    url = "https://www.google.com/"
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=False)
         context = await browser.new_context(record_video_dir="videos/")
         page = await context.new_page()
         await stealth_async(page)
-        await page.goto("https://www.jotform.com/build/242140946353454?s=templates")
+        await page.goto("https://www.google.com/")
 
         try:
             res = await call_agent(objective, page, url)
